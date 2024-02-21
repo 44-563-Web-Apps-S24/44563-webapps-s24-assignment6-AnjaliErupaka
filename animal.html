@@ -1,49 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <title>ANIMAL ASSIGN06</title>
-    </head>
+</head>
 <body>
     
-    <h2>Animal Game by Anjali Erupaka</h2>
-    <form>
-        <label for="secretAnimal">The hidden animal type:</label>
-        <input type="password" id="secretAnimal" name="secretAnimal" value="Chicken"><br>
+<h2>Animal Game by Anjali Erupaka</h2>
+<form>
+    <label for="secretAnimal">The hidden animal type:</label>
+    <input type="password" id="secretAnimal" name="secretAnimal" value="Chicken"><br>
     
-        <label for="guessAnimal">Guess the animal:</label>
-        <input type="text" id="guessAnimal" name="guessAnimal"><br>
+    <label for="guessAnimal">Guess the animal:</label>
+    <input type="text" id="guessAnimal" name="guessAnimal"><br>
     
-        <input type="button" value="Check the guess" onclick="checkAnimal()"><br>
+    <input type="button" value="Check the guess" onclick="checkAnimal()"><br>
     
-        <p id="result"></p>
-    </form>
-    
-    <script>
-        // Global variables to store the counts
-        var wrong = 0;
-        var correct = 0;
-    
-        // Function to check the animal guess
-        function checkAnimal() {
-            // Get the values from input elements
-            var secretAnimal = document.getElementById("secretAnimal").value;
-            var guessAnimal = document.getElementById("guessAnimal").value;
-    
-            // Compare the values
-            if (secretAnimal === guessAnimal) {
-                // If correct, increment correct count and display message
-                correct++;
-                alert("Ruff ruff");
-            } else {
-                // If wrong, increment wrong count and display message
-                wrong++;
-                alert("Grrrr");
-            }
-    
-            // Update the result display with correct and wrong counts
-            var resultElement = document.getElementById("result");
-            resultElement.innerHTML = "Correct: " + correct + ", Wrong: " + wrong;
+    <p id="result"></p>
+</form>
+
+<!-- Add a div container for the images -->
+<div id="imageContainer"></div>
+
+<script>
+    // Global variables to store the counts and the index of the current image
+    var wrong = 0;
+    var correct = 0;
+    var useImage = 1; // Initial value for selecting the image
+
+    // Function to check the animal guess
+    function checkAnimal() {
+        // Get the values from input elements
+        var secretAnimal = document.getElementById("secretAnimal").value;
+        var guessAnimal = document.getElementById("guessAnimal").value;
+
+        // Compare the values
+        if (secretAnimal === guessAnimal) {
+            // If correct, increment correct count and display message
+            correct++;
+            alert("Ruff ruff");
+        } else {
+            // If wrong, increment wrong count and display message
+            wrong++;
+            alert("Grrrr");
         }
+
+        // Update the result display with correct and wrong counts
+        var resultElement = document.getElementById("result");
+        resultElement.innerHTML = "Correct: " + correct + ", Wrong: " + wrong;
+    }
 </script>
+
+<h3>Click on image</h3>
+<div>
+    <img src="unicorn kiss.jpg" id="image" width="150" height="150" onclick="selectImage()">
+  </div>
+
+  <script>
+        var useImage = 1
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("image").src = "unicorn kiss.jpg";
+                    useImage++
+                    break
+                case 2:
+                    document.getElementById("image").src = "pineapple punch.jpg";
+                    useImage++
+                    break
+                case 3:
+                    document.getElementById("image").src = "rum.jpg";
+                    useImage = 1
+                    break
+                default:
+            }
+        }
+           </script>
 </body>
-</html> 
+</html>
